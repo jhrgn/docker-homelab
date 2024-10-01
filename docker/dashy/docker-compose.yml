@@ -1,0 +1,11 @@
+services:
+  dashy:
+    image: lissy93/dashy:latest
+    container_name: dashy
+    ports:
+      - 3001:8080 # For web UI, use whatever port you want on the left
+    volumes:
+      - ./config/conf.yml:/app/user-data/conf.yml # This mounts your config file
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

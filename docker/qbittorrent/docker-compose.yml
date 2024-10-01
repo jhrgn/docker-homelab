@@ -1,0 +1,27 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Pacific/Auckland
+      - WEBUI_PORT=9091
+      - TORRENTING_PORT=6881
+    volumes:
+      - ./data:/config
+      - ./downloads:/downloads
+      - /mnt/watch:/watch
+      - /mnt/games:/games
+      - /mnt/movies:/movies
+      - /mnt/music:/music
+      - /mnt/tv:/tv
+      - /mnt/misc:/misc
+      - /mnt/watch-c:/watch-c
+      - /mnt/games-c:/games-c
+      - /mnt/movies-c:/movies-c
+      - /mnt/music-c:/music-c
+      - /mnt/tv-c:/tv-c
+      - /mnt/misc-c:/misc-c
+    restart: unless-stopped
